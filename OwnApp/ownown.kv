@@ -1,0 +1,158 @@
+WindowManager:
+    SplashScreen:
+    HomeScreen:
+    MembersScreen:
+    CabezaScreen:
+    ShopWindow:
+
+
+
+<SplashScreen>:
+    name: "splash"
+    btn: btn
+    FloatLayout:
+
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        Image:
+            source: "FreddyTurbina.png"
+            keep_ratio: True
+            allow_stretch: True
+
+        Button:
+            id:btn
+            background_normal: "BotonInicio.png"
+            background_down: "BotonInicio.png"
+
+            pos: (root.width/2)-0.3*root.width, 0.6*root.height
+            canvas:
+                Color:
+                    rgba: 0,0,0,1
+            size_hint: 0.6, 0.2125
+            on_release:
+                root.btnprint()
+                app.root.current = "clicker"
+                root.manager.transition.direction = "up"
+<MembersScreen>:
+    name: "members"
+    champ1 : champ1
+    champ2 : champ2
+    champ3 : champ3
+    champ4 : champ4
+    FloatLayout:
+        Image:
+            source: "Castellana.png"
+            allow_stretch: True
+            keep_ratio: False
+        GridLayout:
+            spacing: 30
+            size_hint: 0.8, 0.8
+            pos_hint: {"x": 0.1, "y": 0.1}
+            cols: 2
+
+            Button:
+                id: champ1
+
+            Button:
+                id: champ2
+
+            Button:
+                id: champ3
+
+            Button:
+                id: champ4
+
+
+        Button:
+            size_hint: 0.2,0.2
+            background_normal: "DoggisClicker.png"
+            background_down: "DoggisClicker2.png"
+            on_release:
+                app.root.current = "clicker"
+                root.manager.transition.direction = "left"
+
+<CabezaScreen>:
+    name: "clicker"
+    doggis: doggis
+    counter: counter
+    champ: champ
+    FloatLayout:
+        Image:
+            source: "DoggisLocal.png"
+            allow_stretch: True
+            keep_ratio: False
+        Button:
+            id: doggis
+            pos_hint: {"x": 0.5-0.3, "y": 0.5-0.1}
+            size_hint: 0.6,0.2
+            background_normal:"DoggisCompleto.png"
+            background_down: "DoggisCompleto.png"
+            on_release:
+                root.eatDoggis()
+        Label:
+            id: counter
+            background_color: 0,0,0,1
+            bold: True
+            font_size:50
+            text: str(root.getProgress())
+            pos_hint: {"x": 0.5-0.2,"y": 0.8}
+            size_hint: 0.4, 0.2
+        Button:
+            size_hint: 0.25, 0.1
+            pos_hint: {"x": 0.70, "y": 0.05}
+            background_normal: "Billetes.png"
+            background_down: "Billetes.png"
+            on_release:
+                root.manager.current = "shop"
+                root.manager.transition.direction = "left"
+        Button:
+            id: champ
+            background_normal: "ShaggyNormal.png"
+            background_down: "ShaggyNormal.png"
+            size_hint: 0.275, 0.375
+            pos_hint: {"x": 0.025, "y": 0.025}
+            on_release:
+                root.changeChamp()
+
+
+
+<ShopWindow>:
+    name: "shop"
+    FloatLayout:
+        Image:
+            source: "Apumanque.png"
+            allow_stretch: True
+            keep_ratio: False
+        Button:
+            on_release:
+                root.manager.current = "clicker"
+                root.manager.transition.direction = "right"
+            size_hint: 0.25, 0.1
+            pos_hint: {"x": 0.70, "y": 0.05}
+            background_normal: "DoggisCompleto.png"
+            background_down: "DoggisCompleto1.png"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
