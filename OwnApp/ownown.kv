@@ -57,24 +57,46 @@ WindowManager:
 
             Button:
                 id: champ1
+                background_normal: "ShaggyNormal.png"
+                background_down: "ShaggyNormal.png"
+                on_release:
+                    root.manager.screens[3].ids.champ.background_normal = "ShaggyNormal.png"
+                    root.manager.screens[3].ids.champ.background_down = "ShaggyNormal.png"
+                    app.root.current = "clicker"
+                    root.manager.transition.direction = "left"
 
             Button:
                 id: champ2
+                background_normal: "Shaggy.png"
+                background_down: "Shaggy.png"
+                on_release:
+                    root.manager.screens[3].ids.champ.background_normal = "Shaggy.png"
+                    root.manager.screens[3].ids.champ.background_down = "Shaggy.png"
+                    app.root.current = "clicker"
+                    root.manager.transition.direction = "left"
 
             Button:
                 id: champ3
+                background_normal: "ScoobyDooNormal.png"
+                background_down: "ScoobyDooNormal.png"
+                on_release:
+                    root.manager.screens[3].ids.champ.background_normal = "ScoobyDooNormal.png"
+                    root.manager.screens[3].ids.champ.background_down = "ScoobyDooNormal.png"
+                    app.root.current = "clicker"
+                    root.manager.transition.direction = "left"
+
 
             Button:
                 id: champ4
+                background_normal: "ScoobyDoo.png"
+                background_down: "ScoobyDoo.png"
+                on_release:
+                    root.manager.screens[3].ids.champ.background_normal = "ScoobyDoo.png"
+                    root.manager.screens[3].ids.champ.background_down = "ScoobyDoo.png"
+                    root.champ4.background_normal: "Castellana.png"
+                    app.root.current = "clicker"
+                    root.manager.transition.direction = "left"
 
-
-        Button:
-            size_hint: 0.2,0.2
-            background_normal: "DoggisClicker.png"
-            background_down: "DoggisClicker2.png"
-            on_release:
-                app.root.current = "clicker"
-                root.manager.transition.direction = "left"
 
 <CabezaScreen>:
     name: "clicker"
@@ -117,7 +139,8 @@ WindowManager:
             size_hint: 0.275, 0.375
             pos_hint: {"x": 0.025, "y": 0.025}
             on_release:
-                root.changeChamp()
+                root.manager.current = "members"
+                root.manager.transition.direction = "right"
 
 
 
